@@ -28,4 +28,4 @@ ENV APP_ENV=production
 EXPOSE 8000
 
 # Start Laravel safely in production
-CMD php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000
