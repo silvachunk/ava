@@ -21,11 +21,8 @@ COPY . .
 # Install Laravel dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Set environment variable to avoid interactive prompts
-ENV APP_ENV=production
+# Clear any old Laravel caches
+RUN php artisan config:clear && php artisan route:clear
 
-# Expose port
-EXPOSE 8000
-
-# Start Laravel safely in production
+# Start only the Laravel app — nothing else
 CMD php artisan serve --host=0.0.0.0 --port=8000
